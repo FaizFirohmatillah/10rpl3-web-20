@@ -1,106 +1,349 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
 
-/* Reset & Styling Dasar */
+:root {
+	color-scheme: light;
+	--ink: #18332b;
+	--muted: #65756d;
+	--paper: #edf3ee;
+	--surface: #ffffff;
+	--line: #dce6de;
+	--green: #246b50;
+	--green-dark: #174b39;
+	--lime: #d7ef8a;
+	--shadow: 0 24px 70px rgba(23, 75, 57, 0.12);
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	box-sizing: border-box;
 }
 
 body {
-  background-color: #f0f2f5;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+	min-height: 100vh;
+	margin: 0;
+	color: var(--ink);
+	background: var(--paper);
+	font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
 
-/* Container Card Utama (Microsite) */
+.profile-page {
+	display: grid;
+	place-items: center;
+	padding: 32px 18px;
+	background-image: radial-gradient(#d3e1d6 0.8px, transparent 0.8px);
+	background-size: 20px 20px;
+}
+
 .microsite-card {
-  width: 100%;
-  max-width: 380px;
-  background-color: #ffffff;
-  border: 2px solid #333;
-  border-radius: 20px;
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	position: relative;
+	width: min(100%, 430px);
+	padding: 38px 28px 28px;
+	overflow: hidden;
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	background: var(--surface);
+	box-shadow: var(--shadow);
+	text-align: center;
+	animation: arrive 450ms ease-out both;
 }
 
-/* Header Avatar Bulat dengan Ikon X */
+.microsite-card::before {
+	position: absolute;
+	inset: 0 0 auto;
+	height: 5px;
+	background: var(--green);
+	content: '';
+}
+
+.profile-kicker {
+	margin: 0 0 22px;
+	color: var(--green);
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
 .avatar-container {
-  margin-bottom: 20px;
+	width: 138px;
+	height: 138px;
+	margin: 0 auto 22px;
+	padding: 6px;
+	border: 1px solid #c9dcb1;
+	border-radius: 50%;
+	background: #f3f7e9;
 }
 
 .avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2px solid #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  color: #333;
-  background-color: #fafafa;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 3px solid var(--surface);
+	border-radius: 50%;
+	background: #e5ece6;
+	object-fit: cover;
 }
 
-/* Ikon Sosial Media (Horizontal) */
+.profile-title {
+	margin: 0;
+	font-family: Manrope, 'Segoe UI', sans-serif;
+	font-size: 2rem;
+	font-weight: 800;
+	line-height: 1.15;
+}
+
+.profile-description {
+	margin: 10px 0 22px;
+	color: var(--muted);
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+
 .social-icons {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 25px;
-  width: 100%;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	margin: 0 0 26px;
 }
 
 .icon-btn {
-  width: 42px;
-  height: 42px;
-  border: 2px solid #333;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #333;
-  text-decoration: none;
-  font-size: 18px;
-  transition: all 0.2s ease;
+	display: inline-flex;
+	min-height: 42px;
+	align-items: center;
+	gap: 8px;
+	padding: 0 12px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	color: var(--green-dark);
+	background: #f7faf6;
+	font-size: 0.86rem;
+	font-weight: 700;
+	text-decoration: none;
+	transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
 }
 
-.icon-btn:hover {
-  background-color: #333;
-  color: #fff;
+.icon-btn span {
+	font-size: 1.1rem;
 }
 
-/* Tombol Tautan (Stacked Link Buttons) */
+.icon-btn:hover,
+.icon-btn:focus-visible {
+	transform: translateY(-2px);
+	border-color: var(--green);
+	color: #fff;
+	background: var(--green);
+	outline: none;
+}
+
 .link-buttons {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+	display: grid;
+	gap: 10px;
+	padding-top: 22px;
+	border-top: 1px solid var(--line);
 }
 
 .btn-link {
-  width: 100%;
-  padding: 14px 20px;
-  border: 2px solid #333;
-  border-radius: 25px; /* Sudut membulat melengkung seperti kapsul */
-  text-align: center;
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  font-size: 15px;
-  background-color: #fff;
-  transition: all 0.2s ease;
+	display: flex;
+	min-height: 54px;
+	align-items: center;
+	gap: 13px;
+	padding: 10px 14px;
+	border: 1px solid var(--line);
+	border-radius: 7px;
+	color: var(--ink);
+	background: #fff;
+	font-size: 0.94rem;
+	font-weight: 700;
+	text-align: left;
+	text-decoration: none;
+	transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
 }
 
-.btn-link:hover {
-  background-color: #333;
-  color: #fff;
-  transform: translateY(-2px);
+.btn-link:hover,
+.btn-link:focus-visible {
+	transform: translateY(-1px);
+	border-color: var(--green);
+	background: #f3f8ee;
+	outline: none;
+}
+
+.btn-link span {
+	display: grid;
+	width: 32px;
+	height: 32px;
+	flex: 0 0 32px;
+	place-items: center;
+	border-radius: 6px;
+	background: var(--lime);
+	font-size: 1rem;
+}
+
+.page-shell {
+	width: min(100% - 36px, 760px);
+	margin: 48px auto;
+}
+
+.form-heading {
+	margin-bottom: 24px;
+}
+
+.form-heading h1 {
+	font-family: Manrope, 'Segoe UI', sans-serif;
+	font-size: 2.5rem;
+}
+
+.eyebrow {
+	margin: 0 0 12px;
+	color: var(--green);
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.form-panel {
+	padding: 28px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: var(--surface);
+	box-shadow: var(--shadow);
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.field {
+	min-width: 0;
+}
+
+.field-wide {
+	grid-column: 1 / -1;
+}
+
+.field > label,
+.field legend {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 0.88rem;
+	font-weight: 700;
+}
+
+.field input:not([type='radio']),
+.field textarea,
+.field select {
+	width: 100%;
+	min-height: 44px;
+	padding: 10px 12px;
+	border: 1px solid #cbd6cd;
+	border-radius: 5px;
+	color: var(--ink);
+	background: #fcfdfb;
+	font: inherit;
+}
+
+.field textarea {
+	min-height: 104px;
+	resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+	border-color: var(--green);
+	outline: 3px solid rgba(35, 107, 80, 0.14);
+}
+
+.field fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.radio-options {
+	display: flex;
+	min-height: 44px;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 18px;
+}
+
+.radio-options label {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	color: var(--muted);
+	font-size: 0.92rem;
+}
+
+.radio-options input {
+	accent-color: var(--green);
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 22px;
+	padding-top: 20px;
+	border-top: 1px solid var(--line);
+}
+
+.form-actions button {
+	min-height: 46px;
+	padding: 0 20px;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	background: var(--green);
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.form-actions button:hover {
+	background: var(--green-dark);
+}
+
+@keyframes arrive {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 520px) {
+	.microsite-card {
+		padding: 34px 20px 22px;
+	}
+
+	.profile-title {
+		font-size: 1.75rem;
+	}
+
+	.form-grid {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	.field-wide {
+		grid-column: auto;
+	}
+
+	.form-panel {
+		padding: 20px 16px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
 }
